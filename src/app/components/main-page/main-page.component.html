@@ -1,0 +1,118 @@
+<body class="font-sans bg-[#F5F7FA] text-[#1B1B1E]">
+      <!-- HEADER -->
+      <header class="bg-custom-gradient shadow-md py-4 fixed w-full top-0 z-50">
+        <div class="max-w-6xl mx-auto flex justify-between items-center px-4">
+          <div class="flex items-center gap-3">
+            <img src="images/parkingProLOGO.png" alt="Logo parkingPRO" class="w-12 h-12 scale-hover">
+            <h1 class="text-xl font-semibold text-white">parkingPRO</h1>
+          </div>
+          <nav class="space-x-6 text-white">
+            <a href="#" class="text-base nav-link">Características</a>
+            <a href="#" class="text-base nav-link">Cómo funciona</a>
+            <a href="#" class="text-base nav-link">Precios</a>
+            <a href="#" class="text-base nav-link">Contacto</a>
+            <a routerLink="/select" class="bg-green-dark text-white px-4 py-2 rounded-xl hover:bg-green-dark hover:bg-opacity-70 transition-colors duration-300">Iniciar Sesión</a>
+          </nav>
+        </div>
+      </header>
+
+      <!-- HERO -->
+      <section class="bg-[#d9eae3] pt-24 mt-16 text-center">
+        <h2 class="text-4xl font-bold mb-4 text-[#2D6A4F]">Solución de Gestión de Parqueaderos</h2>
+        <p class="text-black text-lg mb-10">Facilitamos la conexión entre quienes necesitan un parqueadero y quienes desean rentarlo.</p>
+        <img [src]="img" alt="Imagen representativa" class="w-full h-80 shadow-xl">
+      </section>
+
+      <!-- BENEFICIOS -->
+      <section id="beneficios" class="py-20 bg-[#d9eae3]">
+        <h3 class="text-3xl font-bold mb-12 text-center text-[#2D6A4F]">¡Sé parte de nosotros!</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto px-4">
+          <!-- Propietarios -->
+          <div class="hover-card bg-white p-8 rounded-xl">
+            <h4 class="text-2xl font-bold mb-4 text-[#40916C]">Propietarios</h4>
+            <ul class="space-y-4 mb-6 text-[#6C757D]">
+              <li class="flex items-center"><span class="mr-2">✓</span>Publica tu espacio fácilmente</li>
+              <li class="flex items-center"><span class="mr-2">✓</span>Gana dinero por tu parqueadero</li>
+              <li class="flex items-center"><span class="mr-2">✓</span>Controla precio y disponibilidad</li>
+            </ul>
+            <a href="FormPropietario.jsp" class="float-button bg-[#2D6A4F] text-white px-6 py-3 rounded-full inline-block">Registrarse</a>
+          </div>
+
+          <!-- Usuarios -->
+          <div class="hover-card bg-white p-8 rounded-xl">
+            <h4 class="text-2xl font-bold mb-4 text-[#40916C]">Usuarios</h4>
+            <ul class="space-y-4 mb-6 text-[#6C757D]">
+              <li class="flex items-center"><span class="mr-2">✓</span>Busca parqueaderos cercanos</li>
+              <li class="flex items-center"><span class="mr-2">✓</span>Reserva y paga anticipadamente</li>
+              <li class="flex items-center"><span class="mr-2">✓</span>Precios flexibles y transparentes</li>
+            </ul>
+            <a href="FormConductor.jsp" class="float-button bg-[#2D6A4F] text-white px-6 py-3 rounded-full inline-block">Registrarse</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- RAZONES -->
+      <section class="py-20 bg-white">
+        <h3 class="text-3xl font-bold mb-12 text-center text-[#2D6A4F]">¿Por qué elegirnos?</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto px-4">
+          <div class="hover-card p-8 rounded-xl text-center">
+            <h4 class="text-xl font-bold mb-4 text-[#40916C]">Seguridad Garantizada</h4>
+            <p class="text-[#6C757D]">Verificamos los espacios y protegemos tus pagos</p>
+          </div>
+          <div class="hover-card p-8 rounded-xl text-center">
+            <h4 class="text-xl font-bold mb-4 text-[#40916C]">Disponible 24/7</h4>
+            <p class="text-[#6C757D]">Accede a parqueaderos en cualquier momento</p>
+          </div>
+          <div class="hover-card p-8 rounded-xl text-center">
+            <h4 class="text-xl font-bold mb-4 text-[#40916C]">Pagos Seguros</h4>
+            <p class="text-[#6C757D]">Reserva desde tu celular y paga con confianza</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FORMULARIO -->
+      <section class="py-20 bg-[#d9eae3]">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+          <h3 class="text-3xl font-bold mb-6 text-[#2D6A4F]">¿Listo para empezar?</h3>
+          <p class="text-[#6C757D] mb-8">Explora las opciones de parqueo disponibles cerca de ti</p>
+          <div class="flex justify-center">
+            <input type="text" 
+                   placeholder="Buscar parqueadero por ciudad o dirección" 
+                   class="px-6 py-3 border-2 border-[#DEE2E6] rounded-l-full w-96 focus:outline-none border-[#40916C]">
+            <button class="bg-[#429571] px-8 py-3 rounded-r-full">Buscar</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="bg-white border-t border-[#DEE2E6] py-12">
+        <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 px-4 text-[#6C757D]">
+          <div>
+            <h4 class="text-lg font-bold mb-4 text-[#2D6A4F]">parkingPRO</h4>
+            <p class="hover:text-[#40916C] transition-colors">Laura Arteta</p>
+            <p class="hover:text-[#40916C] transition-colors">Sebastian Rojas</p>
+            <p class="hover:text-[#40916C] transition-colors">Sheyla Ordoñez</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-4 text-[#2D6A4F]">Contacto</h4>
+            <p class="hover:text-[#40916C] transition-colors">infoparkingpro.com</p>
+            <p class="hover:text-[#40916C] transition-colors">+57 300 123 4567</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-4 text-[#2D6A4F]">Enlaces</h4>
+            <p><a href="#" class="hover:text-[#40916C] transition-colors">Inicio</a></p>
+            <p><a href="#" class="hover:text-[#40916C] transition-colors">Características</a></p>
+            <p><a href="#" class="hover:text-[#40916C] transition-colors">Precios</a></p>
+            <p><a href="#" class="hover:text-[#40916C] transition-colors">Contacto</a></p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-4 text-[#2D6A4F]">Legal</h4>
+            <p><a href="#" class="hover:text-[#40916C] transition-colors">Términos y condiciones</a></p>
+            <p><a href="#" class="hover:text-[#40916C] transition-colors">Política de Privacidad</a></p>
+            <p><a href="#" class="hover:text-[#40916C] transition-colors">FAQ</a></p>
+          </div>
+        </div>
+        <div class="text-center text-sm text-[#6C757D] mt-12">© 2025 parkingPRO. Todos los derechos reservados.</div>
+      </footer>
+    </body>
+  `

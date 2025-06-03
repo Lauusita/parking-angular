@@ -1,0 +1,144 @@
+<div class="min-h-screen bg-background-gradient flex flex-col">
+      <!-- Header -->
+      <header class="bg-white/20 backdrop-blur-sm shadow-md p-4">
+        <div class="flex items-center justify-between max-w-7xl mx-auto">
+          <h1 class="text-2xl font-bold text-white">Mi Perfil</h1>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="flex-grow container mx-auto px-4 py-8">
+        <div class="bg-white/20 backdrop-blur-sm rounded-lg p-6 max-w-2xl mx-auto">
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center gap-4">
+              <div class="bg-green-dark rounded-full p-4">
+                <fa-icon [icon]="userIcon" class="text-2xl text-white"></fa-icon>
+              </div>
+              <div>
+                <h2 class="text-xl font-semibold text-white">{{ prop.nombre }} {{ prop.apellido }}</h2>
+                <p class="text-white/80">{{ prop.correo }}</p>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <button 
+                (click)="toggleEdit()"
+                [class]="isEditing ? 'bg-rose-shadow' : 'bg-green-dark'"
+                class="p-2 rounded-full text-white hover:opacity-80 transition"
+              >
+                <fa-icon [icon]="isEditing ? cancelIcon : editIcon"></fa-icon>
+              </button>
+              @if (!isEditing) {
+                <button 
+                (click)="openDeleteModal()"
+                  class="bg-rose-shadow p-2 rounded-full text-white hover:opacity-80 transition"
+                >
+                  <fa-icon [icon]="deleteIcon"></fa-icon>
+                </button>
+              }
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            @if (isEditing) {
+              <!-- Edit Form -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-white">Nombre</label>
+                  <input 
+                    [value]="prop.nombre"
+                    class="mt-1 block w-full rounded-md border-gray-300 bg-white/90 p-2"
+                    type="text"
+                  >
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-white">Apellido</label>
+                  <input 
+                    [value]="prop.apellido"
+                    class="mt-1 block w-full rounded-md border-gray-300 bg-white/90 p-2"
+                    type="text"
+                  >
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-white">Teléfono</label>
+                  <input 
+                    [value]="prop.telefono"
+                    class="mt-1 block w-full rounded-md border-gray-300 bg-white/90 p-2"
+                    type="tel"
+                  >
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-white">Tipo de Documento</label>
+                  <select 
+                    [value]="prop.tipoDocumento"
+                    class="mt-1 block w-full rounded-md border-gray-300 bg-white/90 p-2"
+                  >
+                    <option value="CC">CC</option>
+                    <option value="PASSPORT">Pasaporte</option>
+                    <option value="NIT">NIT</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-white">Número de Documento</label>
+                  <input 
+                    [value]="prop.numeroDocumento"
+                    class="mt-1 block w-full rounded-md border-gray-300 bg-white/90 p-2"
+                    type="text"
+                  >
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-white">Correo</label>
+                  <input 
+                    [value]="prop.correo"
+                    class="mt-1 block w-full rounded-md border-gray-300 bg-white/90 p-2"
+                    type="email"
+                  >
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-white">Contraseña</label>
+                  <input 
+                    [value]="prop.contrasena"
+                    class="mt-1 block w-full rounded-md border-gray-300 bg-white/90 p-2"
+                    type="password"
+                  >
+                </div>
+              </div>
+              <div class="flex justify-end mt-4">
+                <button 
+                  (click)="edit()"
+                  class="bg-green-dark text-white px-4 py-2 rounded-md hover:opacity-80 transition flex items-center gap-2"
+                >
+                  <fa-icon [icon]="saveIcon"></fa-icon>
+                  Guardar Cambios
+                </button>
+              </div>
+            } @else {
+              <!-- Display Info -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white/10 p-4 rounded-lg">
+                  <p class="text-white/60 text-sm">Teléfono</p>
+                  <p class="text-white">{{ prop.telefono }}</p>
+                </div>
+                <div class="bg-white/10 p-4 rounded-lg">
+                  <p class="text-white/60 text-sm">Tipo de Documento</p>
+                  <p class="text-white">{{ prop.tipoDocumento }}</p>
+                </div>
+                <div class="bg-white/10 p-4 rounded-lg">
+                  <p class="text-white/60 text-sm">Número de Documento</p>
+                  <p class="text-white">{{ prop.numeroDocumento }}</p>
+                </div>
+                <div class="bg-white/10 p-4 rounded-lg">
+                  <p class="text-white/60 text-sm">Correo</p>
+                  <p class="text-white">{{ prop.correo }}</p>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="bg-white/20 backdrop-blur-sm text-center text-sm text-white/80 py-4">
+        © 2025 Parking Pro. Todos los derechos reservados.
+      </footer>
+    </div>
+  `
