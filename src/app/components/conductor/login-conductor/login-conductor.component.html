@@ -1,0 +1,199 @@
+<body class="h-full">
+  <div class="bg-background-gradient flex flex-col justify-center items-center h-full px-6 py-12 lg:px-8">
+    <div class="flex gap-3 items-center justify-center mx-auto mb-10 h-10 w-auto">
+      <fa-icon [icon]='icons.logo' class="text-4xl text-white"></fa-icon>
+      <span class="text-4xl text-white">Parking pro</span>
+    </div>
+  
+    <div class="bg-black bg-opacity-15 rounded-lg sm:mx-auto sm:w-full sm:max-w-md backdrop-blur-sm">
+  
+      <!-- TOOGLE -->
+      <div class="sm:mx-auto sm:w-full sm:max-w-md  rounded-t-lg ">
+        <div class="flex flex-col items-center space-y-4 ">
+          <div
+            class="relative w-full h-8  p-1 cursor-pointer"
+            (click)="toggleState()"
+          >
+            <div
+              class="absolute w-[calc(100%_/_2)] h-7 bg-white/20 rounded-t-lg transition-transform duration-300 ease-in-out border-br-[-50%]"
+              [ngClass]="{
+                'translate-x-0': !isSignUp,
+                'translate-x-[95%] sm:translate-x-[96.5%] ': isSignUp }"
+            ></div>
+            <div class="relative flex justify-between items-center h-full mt-1">
+              <span
+                class="flex-1 text-center z-10 transition-colors duration-300 text-sm"
+                [ngClass]="{
+                  'text-white font-bold ': !isSignUp,
+                  'text-slate-300 bg-transparent after:bg-transparent before:bg-transparent': isSignUp}"
+              >
+                  <!-- after:absolute after:bottom-[0px] after:right-[calc(50%-14px)] after:h-[10px] after:w-[10px] after:rounded-bl-lg after:bg-gray-300  before:absolute before:bottom-[-4px] before:right-[calc(50%-14px)] before:h-[10px] before:w-[10px] rounded-t-md before:bg-white -->
+  
+                Sign In
+              </span>
+              <span
+                class="flex-1 text-center z-10 transition-colors duration-300 text-sm"
+                [ngClass]="{
+                  'text-white font-bold bg-transparent ': isSignUp,
+                  'text-slate-300 bg-transparent': !isSignUp}"
+              >
+              <!-- after:absolute after:h-[10px] after:w-[10px] after:bg-gray-300 after:left-[calc(50%-14.5px)] after:bottom-[0px] after:rounded-br-lg before:absolute before:h-[10px] before:w-[10px] before:bg-white before:left-[calc(50%-10px)] before:bottom-[-4px] -->
+                Sign Up
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class=" sm:mx-auto sm:w-full sm:max-w-md p-1 pt-0">
+        <div class="bg-white/20 p-10 rounded-b-lg min-w-[20rem] backdrop-blur-sm">
+            <h2 class="mb-8 text-center text-2xl/9 font-bold tracking-tight text-white">
+              {{ !isSignUp ? "Inicia sesión en tu cuenta" : "Crea una cuenta"}}
+            </h2>
+  
+            <form class="space-y-6" [formGroup]="conductorForm" (ngSubmit)="onSubmit()">
+  
+              @if ( isSignUp ) {
+                <div class="flex gap-x-1 sm:flex-row flex-col">
+                  <div class="w-full">
+                    <label for="nombre" class="block text-sm/6 font-medium text-white">First Name</label>
+                    <div class="mt-2">
+                      <input formControlName="nombre" id="nombre" name="nombre" type="text" autocomplete="name" required class="block w-full rounded-md border-0 p-1.5 text-gray-600 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6 outline-0">
+                    </div>
+                    @if (nombre?.errors?.['required'] && nombre?.touched) {
+                      <div class="flex animate-fall text-red-500 transition-all duration-500 gap-1 mt-1">
+                        <fa-icon [icon]='icons.warning' class="text-xs"></fa-icon>
+                        <span class="text-xs">Field required</span>
+                      </div>
+                    }
+                  </div>
+                  <div class="w-full mt-6 sm:mt-0">
+                    <label for="apellido" class="block text-sm/6 font-medium text-white">Last Name</label>
+                    <div class="mt-2">
+                      <input formControlName="apellido" id="apellido" name="apellido" type="text" autocomplete="cc-name" required class="block w-full rounded-md border-0 p-1.5 text-gray-600 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6 outline-0">
+                    </div>
+                    @if (apellido?.errors?.['required'] && apellido?.touched) {
+                      <div class="flex animate-fall text-red-500 transition-all duration-500 gap-1 mt-1">
+                        <fa-icon [icon]='icons.warning' class="text-xs"></fa-icon>
+                        <span class="text-xs">Field required</span>
+                      </div>
+                    }
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-x-1">
+                  <div>
+                    <label for="tipoDocumento" class="block text-sm/6 font-medium text-white">Tipo de Documento</label>
+                    <div class="mt-2">
+                      <select formControlName="tipoDocumento" name="tipoDocumento" id="tipoDocumento" autocomplete="tipoDocumento" required class="block w-full rounded-md border-0 p-1.5 text-gray-600  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6 outline-0" >
+                        <option value="CC">CC</option>
+                        <option value="PASSPORT">Pasaporte</option>
+                        <option value="NIT">NIT</option>
+                      </select>
+                    </div>
+                    @if (tipoDocumento?.errors?.['required'] && tipoDocumento?.touched) {
+                      <div class="flex animate-fall text-red-500 transition-all duration-500 gap-1 mt-1">
+                        <fa-icon [icon]='icons.warning' class="text-xs"></fa-icon>
+                        <span class="text-xs">Field required</span>
+                      </div>
+                    }
+                    @if (tipoDocumento?.errors?.['tipoDocumento'] && tipoDocumento?.touched) {
+                      <div class="flex animate-fall text-red-500 transition-all duration-500 gap-1 mt-1">
+                        <fa-icon [icon]='icons.warning' class="text-xs"></fa-icon>
+                        <span class="text-xs">Field must be an email</span>
+                      </div>
+                    }
+                  </div>
+                  <div>
+                    <label for="numeroDocumento" class="block text-sm/6 font-medium text-white">Número de Documento</label>
+                    <div class="mt-2">
+                      <input formControlName="numeroDocumento" id="numeroDocumento" name="numeroDocumento" autocomplete="numeroDocumento" required class="block w-full rounded-md border-0 p-1.5 text-gray-600  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6 outline-0">
+                    </div>
+                    @if (numeroDocumento?.errors?.['required'] && numeroDocumento?.touched) {
+                      <div class="flex animate-fall text-red-500 transition-all duration-500 gap-1 mt-1">
+                        <fa-icon [icon]='icons.warning' class="text-xs"></fa-icon>
+                        <span class="text-xs">Field required</span>
+                      </div>
+                    }
+                    @if (numeroDocumento?.errors?.['numeroDocumento'] && numeroDocumento?.touched) {
+                      <div class="flex animate-fall text-red-500 transition-all duration-500 gap-1 mt-1">
+                        <fa-icon [icon]='icons.warning' class="text-xs"></fa-icon>
+                        <span class="text-xs">Field must be a number</span>
+                      </div>
+                    }
+                  </div>
+                </div>
+                <div class="w-full mt-6 sm:mt-0">
+                  <label for="telefono" class="block text-sm/6 font-medium text-white">Telefono</label>
+                  <div class="mt-2">
+                    <input formControlName="telefono" id="telefono" name="telefono" type="number" autocomplete="cc-name" required class="block w-full rounded-md border-0 p-1.5 text-gray-600 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6 outline-0">
+                  </div>
+                  @if (telefono?.errors?.['required'] && telefono?.touched) {
+                    <div class="flex animate-fall text-red-500 transition-all duration-500 gap-1 mt-1">
+                      <fa-icon [icon]='icons.warning' class="text-xs"></fa-icon>
+                      <span class="text-xs">Field required</span>
+                    </div>
+                  }
+                </div>
+              }
+  
+              <div>
+                <label for="correo" class="block text-sm/6 font-medium text-white">Email address</label>
+                <div class="mt-2">
+                  <input formControlName="correo" id="correo" name="correo" type="email" autocomplete="correo" required class="block w-full rounded-md border-0 p-1.5 text-gray-600  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6 outline-0">
+                </div>
+                @if (correo?.errors?.['required'] && correo?.touched) {
+                  <div class="flex animate-fall text-red-500 transition-all duration-500 gap-1 mt-1">
+                    <fa-icon [icon]='icons.warning' class="text-xs"></fa-icon>
+                    <span class="text-xs">Field required</span>
+                  </div>
+                }
+                @if (correo?.errors?.['correo'] && correo?.touched) {
+                  <div class="flex animate-fall text-red-500 transition-all duration-500 gap-1 mt-1">
+                    <fa-icon [icon]='icons.warning' class="text-xs"></fa-icon>
+                    <span class="text-xs">Field must be an email</span>
+                  </div>
+                }
+              </div>
+  
+              <div>
+                <div class="flex items-center justify-between">
+                  <label for="contrasena" class="block text-sm/6 font-medium text-white">Contraseña</label>
+                  <!-- @if (!isSignUp) {
+                    <div class="text-sm">
+                      <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot contrasena?</a>
+                    </div>
+                  } -->
+                </div>
+                <div class="mt-2">
+                  <input formControlName="contrasena" id="contrasena" name="contrasena" type="password" autocomplete="current-contrasena" required class="block w-full rounded-md border-0 p-1.5 text-gray-600 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6 outline-0">
+                </div>
+                @if (contrasena?.errors?.['required'] && contrasena?.touched) {
+                  <div class="flex animate-fall text-red-500 transition-all duration-500 gap-1 mt-1">
+                    <fa-icon [icon]='icons.warning' class="text-xs"></fa-icon>
+                    <span class="text-xs">Field required</span>
+                  </div>
+                }
+                @if (contrasena?.errors?.['minlength'] && contrasena?.touched) {
+                  <div class="flex animate-fall text-red-500 transition-all duration-500 gap-1 mt-1">
+                    <fa-icon [icon]='icons.warning' class="text-xs"></fa-icon>
+                    <span class="text-xs">contrasena must contain at least 6 characters</span>
+                  </div>
+                }
+              </div>
+  
+              <div>
+                <button type="submit" class="flex w-full justify-center rounded-md bg-green-dark px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-green-dark hover:bg-opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                  {{ isSignUp ? "Crear cuenta" : "Iniciar sesión"}}
+                </button>
+              </div>
+            </form>
+            @if ( !isSignUp ) {
+              <p class="mt-10 text-center text-sm/6 text-slate-300">Don't have an account yet?
+                <strong class="font-semibold text-white hover:text-rose-shadow cursor-pointer" (click)="toggleState()">Create One</strong>
+              </p>
+            }
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

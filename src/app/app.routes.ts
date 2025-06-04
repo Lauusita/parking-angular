@@ -6,6 +6,9 @@ import { SelectComponent } from './components/select/select.component';
 import { LoginPropietarioComponent } from './components/propietario/login-propietario/login-propietario.component';
 import { PortalPropietarioComponent } from './components/propietario/portal-propietario/portal-propietario.component';
 import { PerfilPropietarioComponent } from './components/propietario/perfil-propietario/perfil-propietario.component';
+import { LoginConductorComponent } from './components/conductor/login-conductor/login-conductor.component';
+import { PerfilConductorComponent } from './components/conductor/perfil-conductor/perfil-conductor.component';
+import { PortalConductorComponent } from './components/conductor/portal-conductor/portal-conductor.component';
 
 export const routes: Routes = [
   {
@@ -22,6 +25,10 @@ export const routes: Routes = [
       {
         path: 'propietario',
         component: LoginPropietarioComponent
+      },
+      {
+        path: 'conductor',
+        component: LoginConductorComponent
       },
     ]
   },
@@ -42,6 +49,26 @@ export const routes: Routes = [
         path: 'perfil',
         canActivate: [authGuard],
         component: PerfilPropietarioComponent
+      }
+    ]
+  },
+  {
+    path: 'conductor',
+    children: [
+      {
+        path: '',
+        redirectTo: "portal",
+        pathMatch: "full"
+      },
+      {
+        path: 'portal',
+        canActivate: [authGuard],
+        component: PortalConductorComponent,
+      },
+      {
+        path: 'perfil',
+        canActivate: [authGuard],
+        component: PerfilConductorComponent
       }
     ]
   },
